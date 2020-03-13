@@ -228,4 +228,5 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
-    - _colour: {r: 1, g: 0.9669811, b: 0.9669811, a: 1}
+    - _colour: {r: 1, g: 0, b: 0.14656258, a: 1}
+    - _emissionColour: {r: 0.2735849, g: 0.25152898, b: 0.14840691, a: 1}
