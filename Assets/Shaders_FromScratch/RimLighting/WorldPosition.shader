@@ -22,7 +22,8 @@
 			void surf (Input IN, inout SurfaceOutput o)
 			{
 				float posY = IN.worldPos.y;
-				o.Albedo = posY > 1 ? _Snow.rgb : posY < 0 ? _Sea.rgb : _Grass.rgb;
+				o.Albedo = posY > 1 ? _Snow.rgb : posY < 0.3 ? _Sea.rgb : _Grass.rgb;
+				o.Emission = frac(IN.worldPos.y * 10) > 0.9 ? fixed3(0.5,0,0.5) : 0;
 				
 			}
 
