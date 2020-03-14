@@ -1,4 +1,4 @@
-﻿Shader "Root/BasicBlin" {
+﻿Shader "Root/BasicBlinn" {
 	Properties {
 		_MainTex("Main", 2D) = "white" {}
 
@@ -9,7 +9,7 @@
 
 	SubShader {
 		CGPROGRAM
-			#pragma surface surf Lambert
+			#pragma surface surf BlinnPhong
 			
 			struct Input
 			{
@@ -22,10 +22,9 @@
 
 			void surf (Input IN, inout SurfaceOutput o)
 			{
-				o.Albedo = float3(0.6,0.6,0.6);
+				o.Albedo = tex2D(_MainTex, IN.uv_MainTex);
 				o.Specular = _Spec;
 				o.Gloss = _Gloss;
-
 			}
 
 		ENDCG
