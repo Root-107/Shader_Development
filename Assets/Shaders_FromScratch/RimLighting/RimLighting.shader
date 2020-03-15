@@ -24,8 +24,7 @@
 			{
 				half rim = 1 - saturate(dot(normalize(IN.viewDir), o.Normal));
 				o.Emission = 
-					(rim > _RimSlider ? _RimColor.rgb * pow(rim,_RimPower) : fixed3(0,0,0)) 
-					* sin(_Time.y + 2);
+					(rim > _RimSlider ? _RimColor.rgb * pow(rim,_RimPower) * ((_SinTime)) : fixed3(0,0,0));
 			}
 
 		ENDCG
