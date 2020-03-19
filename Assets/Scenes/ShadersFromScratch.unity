@@ -736,7 +736,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: 8d5d219e0922649ebad407ab0e56b446, type: 3}
       propertyPath: m_Name
-      value: RampLighting (1)
+      value: AlphaChannle
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8d5d219e0922649ebad407ab0e56b446, type: 3}
       propertyPath: m_LocalPosition.x
