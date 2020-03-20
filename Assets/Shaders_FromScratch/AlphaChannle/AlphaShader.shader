@@ -5,9 +5,14 @@
 	}
 
 	SubShader {
+		Tags {"Queue" = "Transparent"}
+
+		Cull Off
+
 		CGPROGRAM
 			#pragma surface surf Lambert alpha:fade
 			
+
 			struct Input
 			{
 				float2 uv_MainTex;
