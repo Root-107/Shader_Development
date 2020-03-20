@@ -1,4 +1,4 @@
-﻿Shader "Custom/Hologram"
+﻿Shader "Root/Hologram"
 {
     Properties
     {
