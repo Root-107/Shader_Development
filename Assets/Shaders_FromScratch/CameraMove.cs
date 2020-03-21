@@ -24,7 +24,7 @@ public class CameraMove : MonoBehaviour
     {
         float distance = Vector3.Distance(start, end);
         transform.position = start;
-        transform.DOMove(end, distance).SetEase(Ease.Linear).SetLoops(-1);
+        transform.DOMove(end, distance).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
     }
 
 }
