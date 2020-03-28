@@ -1,14 +1,18 @@
-﻿Shader "Root/ColourByVertexFrag"
+﻿Shader "Root/MaterialUse"
 {
     Properties
     {
-       
+        _MainTex ("Texture", 2D) = "white" {}
+        _RippleScaleX("Scale Ripple", float) = 1
     }
     SubShader
     {
         Tags { "RenderType"="Opaque" }
         LOD 100
-
+        GrabPass
+        {
+            
+        }
         Pass
         {
             CGPROGRAM
@@ -20,32 +24,37 @@
             struct appdata
             {
                 float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
             };
 
             struct v2f
             {
+                float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
-                float4 color: COLOR;
             };
 
-            //mesh positions/objct lcoal positions
+            sampler2D _GrabTexture;
+
+            float _RippleScaleX;
+
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                //o.color.r = (v.vertex.x / 5);
-                //o.color.g = (v.vertex.z / 5);
-                //o.color.b = (v.vertex.y / 5);
+                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv.x = (sin(o.uv.x) * 2) + (_Time * _RippleScaleX);
+                o.uv.y = (sin(o.uv.y) * 2) + (_Time * _RippleScaleX);
                 return o;
             }
 
-            //screen space positions
             fixed4 frag (v2f i) : SV_Target
             {
-                fixed4 col = i.color;
-                //fixed4 col;
-                //col.r = i.vertex.x/1920;
-                //col.b = i.vertex.y/1920;
+                // sample the texture
+                fixed4 col = tex2D(_MainTex, i.uv);
+                //col + tex2D(_GrabTexture, i.uv);
                 return col;
             }
             ENDCG
